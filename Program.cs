@@ -1,35 +1,56 @@
 ﻿using System;
+using System.Threading;
 
 namespace FlowControl
 {
     internal class Program
     {
-        static void Main (string[] argv)
+        static void Main(string[] argv)
         {
             bool running = true;
-            while(running)
+            while (running)
             {
-                
+
                 Console.WriteLine("");
-                Console.WriteLine("Welcome to the Main Menu!");
+                Console.WriteLine("Welcome to the Super Cinematic Cinema interactive age verification virtual experience!");
                 Console.WriteLine("--------------------------");
                 Console.WriteLine("Please use 0-9 to navigate");
                 Console.WriteLine("\n");
+                Console.WriteLine("1. Enter age");
                 Console.WriteLine("0. Quit");
                 Console.WriteLine("");
-                
-                
+
+
                 Console.Write("Input: ");
                 string? input = Console.ReadLine();
 
                 switch (input)
                 {
+                    case "1":
+                        Console.WriteLine("");
+                        Console.Write("Input age (in digits): ");
+                        string? ageStr = Console.ReadLine();
+                        int age;
+                        Thread.Sleep(500);
+                        if(int.TryParse(ageStr, out age))
+                        {
+                            if(age < 20)
+                            {
+                                Console.WriteLine("Youth Ticket Cost 80 kr");
+                            }
+                        } else
+                        {
+                            Console.WriteLine("Please use only digits!");
+                        }
+                        Thread.Sleep(800);
+                        break;
                     case "0":
                         Console.WriteLine("Thanks for participating.");
                         running = false;
                         break;
                     default:
                         Console.WriteLine("Incorrect input. Do better. Be better");
+                        Thread.Sleep(800);
                         break;
                 }
             }
