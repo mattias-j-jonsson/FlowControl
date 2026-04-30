@@ -12,6 +12,7 @@ namespace FlowControl
             {
 
                 Console.WriteLine("");
+                Console.WriteLine("--------------------------");
                 Console.WriteLine("Welcome to the Super Cinematic Cinema interactive age verification virtual experience!");
                 Console.WriteLine("--------------------------");
                 Console.WriteLine("Please use 0-9 to navigate");
@@ -24,10 +25,22 @@ namespace FlowControl
                 Console.Write("Input: ");
                 string? input = Console.ReadLine();
 
+                Thread.Sleep(500);
                 switch (input)
                 {
                     case "1":
                         Console.WriteLine("");
+                        Console.Write("How many are going to the movie? ");
+                        string? numberOfCustomersStr = Console.ReadLine();
+                        int numberOfCustomers;
+                        bool correctGuestCount = int.TryParse(numberOfCustomersStr, out numberOfCustomers);
+                        Thread.Sleep(500);
+                        if(!correctGuestCount || numberOfCustomers < 1) // works because does not evakuate second condition if correctGuestCount is null
+                        {
+                            Console.WriteLine("Invalid input");
+                            Thread.Sleep(800);
+                            break;
+                        }
                         Console.Write("Input age (in digits): ");
                         string? ageStr = Console.ReadLine();
                         int age;
@@ -55,7 +68,7 @@ namespace FlowControl
                         running = false;
                         break;
                     default:
-                        Console.WriteLine("Incorrect input. Do better. Be better");
+                        Console.WriteLine("Invalid input. Do better. Be better");
                         Thread.Sleep(800);
                         break;
                 }
