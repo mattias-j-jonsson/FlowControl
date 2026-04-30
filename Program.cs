@@ -6,15 +6,33 @@ namespace FlowControl
     {
         static void Main (string[] argv)
         {
-            Console.WriteLine("");
-            Console.WriteLine("Welcome to the Main Menu!");
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("Please use 0-9 to navigate");
-            Console.WriteLine("\n");
-            Console.WriteLine("0. Quit");
-            Console.WriteLine("");
-            Console.Write("Input: ");
-            string? input = Console.ReadLine();
+            bool running = true;
+            while(running)
+            {
+                
+                Console.WriteLine("");
+                Console.WriteLine("Welcome to the Main Menu!");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("Please use 0-9 to navigate");
+                Console.WriteLine("\n");
+                Console.WriteLine("0. Quit");
+                Console.WriteLine("");
+                
+                
+                Console.Write("Input: ");
+                string? input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "0":
+                        Console.WriteLine("Thanks for participating.");
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Incorrect input. Do better. Be better");
+                        break;
+                }
+            }
         }
     }
 }
