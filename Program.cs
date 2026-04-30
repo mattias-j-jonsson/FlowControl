@@ -36,7 +36,13 @@ namespace FlowControl
                         {
                             if(age < 20)
                             {
-                                Console.WriteLine("Youth Ticket Cost 80 kr");
+                                Console.WriteLine("Youth Ticket 80 kr");
+                            } else if(age > 64)
+                            {
+                                Console.WriteLine("Senior Ticket 90 kr");
+                            } else
+                            {
+                                Console.WriteLine("Standard Ticket 120 kr");
                             }
                         } else
                         {
