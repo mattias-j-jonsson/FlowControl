@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Text;
+using System.Linq;
 
 namespace FlowControl
 {
@@ -25,6 +26,7 @@ namespace FlowControl
                 Console.WriteLine("\n");
                 Console.WriteLine("1. Ticket information");
                 Console.WriteLine("2. Get repeated");
+                Console.WriteLine("3. Word number 3");
                 Console.WriteLine("0. Quit");
                 Console.WriteLine("");
 
@@ -42,55 +44,62 @@ namespace FlowControl
                         int numberOfCustomers;
                         bool correctGuestCount = int.TryParse(numberOfCustomersStr, out numberOfCustomers);
                         Thread.Sleep(500);
-                        if(!correctGuestCount || numberOfCustomers < 1) // works because does not evakuate second condition if correctGuestCount is null
+                        if (!correctGuestCount || numberOfCustomers < 1) // works because does not evakuate second condition if correctGuestCount is null
                         {
                             Console.WriteLine("Invalid input");
                             Thread.Sleep(800);
                             break;
                         }
-                        if(numberOfCustomers == 1)
+                        if (numberOfCustomers == 1)
                         {
                             Console.Write("Age (in digits): ");
                             string? ageStr = Console.ReadLine();
                             int age;
                             Thread.Sleep(500);
-                            if(int.TryParse(ageStr, out age))
+                            if (int.TryParse(ageStr, out age))
                             {
-                                if(age < 20)
+                                if (age < 20)
                                 {
                                     Console.WriteLine("Youth Ticket 80 kr");
-                                } else if(age > 64)
+                                }
+                                else if (age > 64)
                                 {
                                     Console.WriteLine("Senior Ticket 90 kr");
-                                } else
+                                }
+                                else
                                 {
                                     Console.WriteLine("Standard Ticket 120 kr");
                                 }
-                            } else
+                            }
+                            else
                             {
                                 Console.WriteLine("Please use only digits!");
-                            }                            
-                        } else
+                            }
+                        }
+                        else
                         {
                             int totalSum = 0;
-                            for(int i = 0; i < numberOfCustomers; i++)
+                            for (int i = 0; i < numberOfCustomers; i++)
                             {
-                                Console.Write($"Age of guest {i+1} (in digits): ");
+                                Console.Write($"Age of guest {i + 1} (in digits): ");
                                 string? ageStr = Console.ReadLine();
                                 int age;
-                                if(int.TryParse(ageStr, out age))
+                                if (int.TryParse(ageStr, out age))
                                 {
-                                    if(age < 20)
+                                    if (age < 20)
                                     {
                                         totalSum += 80;
-                                    } else if(age > 64)
+                                    }
+                                    else if (age > 64)
                                     {
                                         totalSum += 90;
-                                    } else
+                                    }
+                                    else
                                     {
                                         totalSum += 120;
                                     }
-                                } else
+                                }
+                                else
                                 {
                                     Console.WriteLine("Error. Could not parse age");
                                     totalSum = -1; // this is to not output any previous "valid" calculations that was done befire the invalid input
@@ -119,14 +128,40 @@ namespace FlowControl
                         // }
                         // Console.WriteLine(sb.ToString());
                         // Console.WriteLine();
-                        for(int i = 0; i < 10; i++)
+                        for (int i = 0; i < 10; i++)
                         {
-                            Console.Write((i+1) + ". " + inputToRepeat + " ");
+                            Console.Write((i + 1) + ". " + inputToRepeat + " ");
                         }
                         Thread.Sleep(800);
                         break;
                     case "3":
-                        
+                        Console.Write("Write a sentence with at least 3 words: ");
+                        string? inputSentence = Console.ReadLine();
+                        Thread.Sleep(500);
+                        string[] splitSentence = inputSentence.Split(' ');
+                        if (splitSentence.Length < 3)
+                        {
+                            Console.WriteLine("Too few words.");
+                            break;
+                        }
+                        int numberOfWords = 0;
+                        int indexOfThirdWord = 0;
+                        while (indexOfThirdWord < splitSentence.Length && numberOfWords < 3)
+                        {
+                            if (splitSentence[indexOfThirdWord].Equals("") == false)
+                            {
+                                numberOfWords++;
+                            }
+                            if (numberOfWords == 3)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                indexOfThirdWord++;
+                            }
+                        }
+                        Console.WriteLine($"The third word: {splitSentence[indexOfThirdWord]}");
                         Thread.Sleep(800);
                         break;
                     case "0":
