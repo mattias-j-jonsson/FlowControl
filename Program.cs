@@ -146,7 +146,7 @@ namespace FlowControl
                         }
                         int numberOfWords = 0;
                         int indexOfThirdWord = 0;
-                        while (indexOfThirdWord < splitSentence.Length && numberOfWords < 3)
+                        while (indexOfThirdWord < splitSentence.Length)
                         {
                             if (splitSentence[indexOfThirdWord].Equals("") == false)
                             {
