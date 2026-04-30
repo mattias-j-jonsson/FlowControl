@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Text;
 
 namespace FlowControl
 {
@@ -23,6 +24,7 @@ namespace FlowControl
                 Console.WriteLine("Please use 0-9 to navigate");
                 Console.WriteLine("\n");
                 Console.WriteLine("1. Ticket information");
+                Console.WriteLine("2. Get repeated");
                 Console.WriteLine("0. Quit");
                 Console.WriteLine("");
 
@@ -91,7 +93,7 @@ namespace FlowControl
                                 } else
                                 {
                                     Console.WriteLine("Error. Could not parse age");
-                                    totalSum = -1;
+                                    totalSum = -1; // this is to not output any previous "valid" calculations that was done befire the invalid input
                                     break;
                                 }
                             }
@@ -101,6 +103,30 @@ namespace FlowControl
                                 Console.WriteLine($"Total cost of tickets is {totalSum} kr");
                             }
                         }
+                        Thread.Sleep(800);
+                        break;
+                    case "2":
+                        Console.Write("Say something and I will repeat it back to you 10 times: ");
+                        string? inputToRepeat = Console.ReadLine();
+                        Thread.Sleep(500);
+                        // StringBuilder sb = new StringBuilder();
+                        // for(int i = 0; i < 10; i++)
+                        // {
+                        //     sb.Append(i+1);
+                        //     sb.Append(". ");
+                        //     sb.Append(inputToRepeat);
+                        //     sb.Append(" ");
+                        // }
+                        // Console.WriteLine(sb.ToString());
+                        // Console.WriteLine();
+                        for(int i = 0; i < 10; i++)
+                        {
+                            Console.Write((i+1) + ". " + inputToRepeat + " ");
+                        }
+                        Thread.Sleep(800);
+                        break;
+                    case "3":
+                        
                         Thread.Sleep(800);
                         break;
                     case "0":
